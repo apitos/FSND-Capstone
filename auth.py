@@ -4,24 +4,11 @@ from functools import wraps
 from jose import jwt
 from urllib.request import urlopen
 
-import http.client
-
 
 AUTH0_DOMAIN = 'capstone-app.eu.auth0.com'
 ALGORITHMS = ['RS256']
 API_AUDIENCE = 'Capstone'
 
-conn = http.client.HTTPSConnection("AUTH0_DOMAIN")
-
-payload = "{\"client_id\":\"J55VPnytALfjPqjrWdhWRGv7vVhRZH0R\",\"client_secret\":\"owGAefX8ykpoFyOtUTex1IFESQ2Y-_UXBnJp3tN2WXR-pEf3D1zguePy1buLK-ic\",\"audience\":\"Capstone\",\"grant_type\":\"client_credentials\"}"
-# print (payload)
-headers = {"content-type":"application/json"}
-conn.request("POST", "/oauth/token", payload, headers)
-res = conn.getresponse()
-data = res.read()
-data1 = data.decode("utf-8")
-result = json.loads(data1)
-access_token = result['access_token']
 
 class AuthError(Exception):
     def __init__(self, error, status_code):
@@ -34,9 +21,7 @@ def get_token_auth_header():
     Obtains the Access Token from the Authorization Header
     """
 
-    auth ='Bearer {}'.format(access_token)
-
-    #auth = request.headers.get('Authorization', None)
+    auth = request.headers.get('Authorization', None)
 
     if not auth:
         print('FAIL')
@@ -66,7 +51,6 @@ def get_token_auth_header():
         }, 401)
 
     token = parts[1]
-    print (token)
     return token
 
 
