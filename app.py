@@ -23,6 +23,26 @@ def create_app(test_config=None):
     migrate = Migrate(app, db)
     CORS(app)
 
+#---
+    movie = Movie(
+        title="First",
+        release_date="2021"
+        )
+
+    
+    actor = Actor(
+        name="I",
+        age="55",
+        gender="Male",
+        movie_id=1
+        )
+
+    db.session.add(movie)
+    db.session.add(actor)
+    db.session.commit()
+
+#---
+# #
     @app.after_request
     def after_request(response):
         response.headers.add('Access-Control-Allow-Headers',

@@ -93,3 +93,25 @@ class Actor(db.Model):
             'gender': self.gender,
             'movie_id': self.movie_id
         }
+
+    def db_drop_and_create_all():
+        db.drop_all()
+        db.create_all()
+        # add one demo row in each table which is helping in POSTMAN test
+        movie = Movie(
+            title="First",
+            release_date="2021"
+            )
+
+        actor = Actor(
+            name="I",
+            age="55",
+            gender="Male",
+            movie_id=1
+            )
+
+        db.session.add(movie)
+        db.session.add(actor)
+        db.session.commit()
+
+    
