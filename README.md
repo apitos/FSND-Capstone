@@ -60,6 +60,30 @@ createdb capstone
 python -m unittest test_app.py
 ```
 
+## Casting app roles and permissions
+Users can access the app's homepage anonymously and its functionality via three roles with specific access permissions.
+
+1. <strong>Casting assistant</strong>: Can view and list details of actors and movies.
+```
+Casting assistant login credentials
+User: casting_assistant@gmail.com
+Password: capstone123!
+```
+
+2. <strong>Casting director</strong>: Can view and list actor and movie details, add, edit and delete actor, and finally it can only edit movie.
+```
+Casting assistant login credentials
+User: casting_director@gmail.com
+Password: capstone123!
+```
+
+2. <strong>Executive producer</strong>: Full access, with the ability to view, edit, update, and delete both movie projects and actors.
+```
+Executive producer login credentials
+User: executive_producer@gmail.com
+Password: capstone123! 
+```
+
 ## API Reference
 
 ### Endpoints
@@ -284,10 +308,11 @@ Errors are returned in the following json format:
     'message': 'Resource not found. Input out of range.'
 }
 ```
-The API returns 6 types of errors:
+The API returns 7 types of errors:
 - 400: bad request
+- 401: unauthorized
 - 404: not found
 - 403: forbidden
+- 405: method not allowed
 - 422: unprocessable
 - 500: internal server error
-- AuthError: which mainly results in 401 (unauthorized)
