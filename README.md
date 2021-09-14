@@ -291,7 +291,3 @@ The API returns 6 types of errors:
 - 422: unprocessable
 - 500: internal server error
 - AuthError: which mainly results in 401 (unauthorized)
-
-## Author and Acknowledgement
-- Linda Chen contributed everything in the project. 
-- The image of the homepage used in this project is contributed to Alex Litvin on Unsplash
