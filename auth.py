@@ -24,8 +24,6 @@ def get_token_auth_header():
     auth = request.headers.get('Authorization', None)
 
     if not auth:
-        print('FAIL')
-        print('auth_header is:', auth)
         raise AuthError({
             'code': 'authorization_header_missing',
             'description': 'Authorization header is expected.'
@@ -138,4 +136,4 @@ def requires_auth(permission=''):
             return f(payload, *args, **kwargs)
 
         return wrapper
-    return requires_auth_decorator    
+    return requires_auth_decorator

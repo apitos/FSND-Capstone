@@ -9,7 +9,8 @@ from flask import jsonify
 database_path = os.environ.get('DATABASE_URL')
 if not database_path:
     database_name = "capstone"
-    database_path = "postgresql://{}/{}".format('postgres:password@localhost:5432', database_name)
+    database_path = "postgresql://{}/{}".format(
+        'postgres:password@localhost:5432', database_name)
 
 db = SQLAlchemy()
 
@@ -22,7 +23,6 @@ def setup_db(app, database_path=database_path):
     moment = Moment(app)
     migrate = Migrate(app, db)
     with app.app_context():
-        # db.drop_all()
         db.create_all()
 
 
@@ -30,7 +30,7 @@ class Movie(db.Model):
     __tablename__ = 'movie'
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String)
-    release_date = db.Column(db.String(30), nullable = False)
+    release_date = db.Column(db.String(30), nullable=False)
 
     actors = db.relationship(
         "Actor", backref="Movie", lazy=True, cascade="all, delete-orphan"
@@ -59,14 +59,14 @@ class Movie(db.Model):
             'actors': [actor.format() for actor in self.actors]
         }
 
+
 class Actor(db.Model):
     __tablename__ = 'actor'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
     age = db.Column(db.Integer)
     gender = db.Column(db.String(120))
-    movie_id = db.Column(db.Integer, db.ForeignKey('movie.id'), nullable=False) 
-    
+    movie_id = db.Column(db.Integer, db.ForeignKey('movie.id'), nullable=False)
 
     def __init__(self, name, age, gender, movie_id):
         self.name = name
