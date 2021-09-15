@@ -1,14 +1,14 @@
 # Casting Agency
 
-# Project Description
+## Project Description
 This is the capstone project for Full - Stack Udacity Nanodegree. Casting Agency models a company that is responsible for creating movies and managing and assigning actors to those movies. There are three different roles in the company Casting Assistant, Casting Director, and Executive Producer. Each of them has a different set of permissions to view, add, update and delete movies and actors in the databse.
 
 The work are done in the back - end. I wrote Restful APIs, built a database using SQLAlchemey, secured the application using Auth0, tested the application using unit tests and via Postman, and finally deploy the application to Heroku.
 
-# Motivation
+## Motivation
 This is my Capstone(Casting Agency) project for the Udacity FSND.
 
-# Project Result
+## Project Result
 Heroku: https://capstone-castingag-app.herokuapp.com/
 
 Localhost: http://127.0.0.1:5000/
@@ -27,7 +27,7 @@ The code is conform to the PEP 8 style guide. It's automatically format by :
 * **HTML**, **CSS ** is planned for the next development of the application.
 
 
-# Getting Started
+## Getting Started
 
 1. Initialize and activate a virtualenv:
     ```
@@ -45,21 +45,21 @@ The code is conform to the PEP 8 style guide. It's automatically format by :
 
 3. run ```source setup.sh``` to set the environnement variables, and the user tokens the user jwts, auth0 credentials
 
-3. Database Setup
+4. Database Setup
 
 ```
 # create capstone database
 CREATE DATABASE capstone
 ```
 
-4. Run the development server:
+5. Run the development server:
     ```
     $ export FLASK_APP=myapp
     $ export FLASK_ENV=development  # enables debug mode
     $ flask run --reload  # reload server after any changes detected
     ```
 
-# Testing
+## Testing
 To run the tests, run
 ```
 dropdb capstone
@@ -67,35 +67,35 @@ createdb capstone
 python -m unittest test_app.py
 ```
 
-# Casting app roles and permissions
+## Casting app roles and permissions
 Users can access the app's homepage anonymously and its functionality via three roles with specific access permissions.
 
-1. <strong>Casting assistant</strong> : Can view and list details of actors and movies.
+1. <strong>Casting assistant</strong>: Can view and list details of actors and movies.
 ```
 Casting assistant login credentials
 User: casting_assistant@gmail.com
 Password: capstone123!
 ```
 
-2. <strong>Casting director</strong> : Can view and list actor and movie details, add, edit and delete actor, and finally it can only edit movie.
+2. <strong>Casting director</strong>: Can view and list actor and movie details, add, edit and delete actor, and finally it can only edit movie.
 ```
 Casting assistant login credentials
 User: casting_director@gmail.com
 Password: capstone123!
 ```
 
-2. <strong>Executive producer</strong> : Full access, with the ability to view, edit, update, and delete both movie projects and actors.
+2. <strong>Executive producer</strong>: Full access, with the ability to view, edit, update, and delete both movie projects and actors.
 ```
 Executive producer login credentials
 User: executive_producer@gmail.com
 Password: capstone123!
 ```
 
-# API Reference
+## API Reference
 
-# Endpoints
+### Endpoints
 
-# GET '/movies'
+#### GET '/movies'
 - General:
     - Return all movies in the database
     - Role Authorized: Casting Assistant, Casting Director, Executive Producer
@@ -150,7 +150,7 @@ Password: capstone123!
         }
 }
 ```
-# GET '/actors'
+#### GET '/actors'
 - General:
     - Return all actors in the database
     - Role Authorized: Casting Assistant, Casting Director, Executive Producer
@@ -188,7 +188,7 @@ Password: capstone123!
 }
 ```
 
-# POST '/movies'
+#### POST '/movies'
 - General:
     - Add a new movie. The new movie must have all two information.
     - Role Authorized: Executive Producer
@@ -209,7 +209,7 @@ Password: capstone123!
 }
 ```
 
-# POST '/actors'
+#### POST '/actors'
 - General:
     - Add a new actor. The new movie must have all four information.
     - Role Authorized: Casting Director, Executive Producer
@@ -232,7 +232,7 @@ Password: capstone123!
 }
 ```
 
-# PATCH '/movies/<int:movie_id>'
+#### PATCH '/movies/<int:movie_id>'
 - General:
     - Update some information of a movie based on a payload.
     - Roles authorized: Casting Director, Executive Producer.
@@ -260,7 +260,7 @@ Password: capstone123!
 }
 ```
 
-# PATCH '/actors/<int:actor_id>'
+#### PATCH '/actors/<int:actor_id>'
 - General:
     - Update some information of an actor based on a payload.
     - Roles authorized: Casting Director, Executive Producer.
@@ -282,7 +282,7 @@ Password: capstone123!
 }
 ```
 
-# DELETE '/movis/<int:movie_id>'
+#### DELETE '/movis/<int:movie_id>'
 - General:
     - Deletes a movie by id from the url parameter.
     - Roles authorized: Executive Producer.
@@ -294,7 +294,7 @@ Password: capstone123!
 }
 ```
 
-# DELETE '/actors/<int:actor_id>'
+#### DELETE '/actors/<int:actor_id>'
 - General:
     - Deletes a movie by id form the url parameter.
     - Roles authorized: Casting Director, Executive Producer.
