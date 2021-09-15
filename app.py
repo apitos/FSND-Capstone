@@ -23,26 +23,6 @@ def create_app(test_config=None):
     migrate = Migrate(app, db)
     CORS(app)
 
-#---
-    movie = Movie(
-        title="First",
-        release_date="2021"
-        )
-
-    
-    actor = Actor(
-        name="I",
-        age="55",
-        gender="Male",
-        movie_id=1
-        )
-
-    db.session.add(movie)
-    db.session.add(actor)
-    db.session.commit()
-
-#---
-# #
     @app.after_request
     def after_request(response):
         response.headers.add('Access-Control-Allow-Headers',
@@ -54,7 +34,6 @@ def create_app(test_config=None):
         return response
 
     # auxiliary endpoint to get token
-
     @app.route('/authorization/url', methods=['GET'])
     def generate_auth_url():
         url = f'https://{AUTH0_DOMAIN}/authorize' \
@@ -320,6 +299,14 @@ def create_app(test_config=None):
             "error": 401,
             "message": 'unauthorized'
         }), 401
+
+    @app.errorhandler(403)
+    def forbidden(error):
+        return jsonify({
+            "success": False,
+            "error": 403,
+            "message": "forbidden"
+        }), 403
 
     @app.errorhandler(404)
     def not_found(error):

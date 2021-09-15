@@ -101,17 +101,15 @@ class Actor(db.Model):
         movie = Movie(
             title="First",
             release_date="2021"
-            )
+        )
 
         actor = Actor(
             name="I",
             age="55",
             gender="Male",
             movie_id=1
-            )
+        )
 
         db.session.add(movie)
         db.session.add(actor)
         db.session.commit()
-
-    
