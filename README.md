@@ -13,18 +13,18 @@ Heroku: https://capstone-castingag-app.herokuapp.com/
 
 Localhost: http://127.0.0.1:5000/
 
-The code is conform to the PEP 8 style guide. It's automatically format by :
-	```
-	$ autopep8 --in-place --aggressive --aggressive <filename>
-	```
+The code is conform to the PEP 8 style guide. It's automatically format by:
+    ```
+    $ autopep8 --in-place --aggressive --aggressive <filename>
+    ```
 
 # Tech Stack
 * **PostgreSQL** as our database of choice
-* **Python3** and **Flask ** as our server language and server framework
+* **Python3** and **Flask** as our server language and server framework
 * **Auth0** for authentication management
 * **Heroku** for deployment
 * **JSON** for rendering the results.
-* **HTML**, **CSS ** is planned for the next development of the application.
+* **HTML**, **CSS** is planned for the next development of the application.
 
 
 ## Getting Started
